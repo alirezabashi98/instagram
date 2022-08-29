@@ -1,4 +1,5 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class ShareBottomSheet extends StatelessWidget {
@@ -82,6 +83,7 @@ class ShareBottomSheet extends StatelessWidget {
                       Expanded(
                           child: TextField(
                         decoration: InputDecoration(
+                          hintText: "Search User",
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
                         ),
@@ -104,9 +106,37 @@ class ShareBottomSheet extends StatelessWidget {
             childCount: 100,
           ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisSpacing: 22,
-            crossAxisSpacing: 22,
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 10,
             crossAxisCount: 4,
+            mainAxisExtent: 110,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _getItemGrid() {
+    return Column(
+      children: [
+        Container(
+          width: 60,
+          height: 60,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.asset("images/profile.png"),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Text(
+          "alirezabashi98",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontFamily: 'GB',
+            fontSize: 12,
+            color: Colors.white,
           ),
         ),
       ],
