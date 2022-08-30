@@ -1,7 +1,34 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-class SplashScreen extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:instagram/screen/login_screen.dart';
+import 'package:instagram/screen/main_screen.dart';
+import 'package:instagram/screen/switch_account_screen.dart';
+
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    Timer(
+      Duration(seconds: 4),
+      () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => SwitchAccountScreen(),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,18 +72,3 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
-
-
-//Column(
-          //   children: [
-          //     Expanded(
-          //       child: Center(
-          //         child: 
-          //       ),
-          //     ),
-          
-          //     SizedBox(
-          //       height: 32,
-          //     )
-          //   ],
-          // )),

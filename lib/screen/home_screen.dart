@@ -16,36 +16,6 @@ class HomeScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: ElevatedButton(
-                onPressed: () {
-                  showModalBottomSheet(
-                    barrierColor: Colors.transparent,
-                    backgroundColor: Colors.transparent,
-                    context: context,
-                    isScrollControlled: true,
-                    builder: (BuildContext context) {
-                      return Padding(
-                        padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).viewInsets.bottom,
-                        ),
-                        child: DraggableScrollableSheet(
-                          initialChildSize: 0.5,
-                          minChildSize: 0.2,
-                          maxChildSize: 0.7,
-                          builder: (context, controler) {
-                            return ShareBottomSheet(
-                              controller: controler,
-                            );
-                          },
-                        ),
-                      );
-                    },
-                  );
-                },
-                child: Text('Open BottomSheet'),
-              ),
-            ),
-            SliverToBoxAdapter(
               child: _getStoryList(),
             ),
             SliverList(
@@ -81,22 +51,22 @@ class HomeScreen extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: 9,
-      itemBuilder: (context, index) => _getPost(),
+      itemBuilder: (context, index) => _getPost(context),
     );
   }
 
-  Column _getPost() {
+  Column _getPost(BuildContext context) {
     return Column(
       children: [
         SizedBox(height: 34),
         _getHeaderPost(),
         SizedBox(height: 24),
-        _getBodyPost(),
+        _getBodyPost(context),
       ],
     );
   }
 
-  Container _getBodyPost() {
+  Container _getBodyPost(BuildContext context) {
     return Container(
       width: 394,
       height: 440,
@@ -139,7 +109,9 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Image.asset('images/icon_hart.png'),
+                          Image.asset(
+                            'images/icon_hart.png',
+                          ),
                           SizedBox(width: 6),
                           Text(
                             "2.5k",
@@ -153,7 +125,9 @@ class HomeScreen extends StatelessWidget {
                       Row(
                         children: [
                           SizedBox(width: 15),
-                          Image.asset('images/icon_comments.png'),
+                          Image.asset(
+                            'images/icon_comments.png',
+                          ),
                           SizedBox(width: 6),
                           Text(
                             "1.5k",
@@ -164,8 +138,40 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Image.asset('images/icon_share.png'),
-                      Image.asset('images/icon_save.png'),
+                      GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet(
+                            barrierColor: Colors.transparent,
+                            backgroundColor: Colors.transparent,
+                            context: context,
+                            isScrollControlled: true,
+                            builder: (BuildContext context) {
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom,
+                                ),
+                                child: DraggableScrollableSheet(
+                                  initialChildSize: 0.5,
+                                  minChildSize: 0.2,
+                                  maxChildSize: 0.7,
+                                  builder: (context, controler) {
+                                    return ShareBottomSheet(
+                                      controller: controler,
+                                    );
+                                  },
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        child: Image.asset(
+                          'images/icon_share.png',
+                        ),
+                      ),
+                      Image.asset(
+                        'images/icon_save.png',
+                      ),
                     ],
                   ),
                 ),

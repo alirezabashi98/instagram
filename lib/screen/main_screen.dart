@@ -7,14 +7,14 @@ import 'package:instagram/screen/home_screen.dart';
 import 'package:instagram/screen/profile_screen.dart';
 import 'package:instagram/screen/search_screen.dart';
 
-class MAinScreen extends StatefulWidget {
-  const MAinScreen({Key? key}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
-  State<MAinScreen> createState() => _MAinScreenState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MAinScreenState extends State<MAinScreen> {
+class _MainScreenState extends State<MainScreen> {
   int _selectedBottomNavigationItem = 0;
 
   @override

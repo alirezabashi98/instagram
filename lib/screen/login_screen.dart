@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/screen/main_screen.dart';
+import 'package:instagram/screen/switch_account_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -99,6 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 44),
                       child: TextField(
+                        style: TextStyle(color: Colors.white),
                         focusNode: focusInputeEmail,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(15),
@@ -133,6 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 44),
                       child: TextField(
+                        style: TextStyle(color: Colors.white),
                         focusNode: focusInputePassword,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(15),
@@ -159,6 +163,51 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 32),
+                      width: 100,
+                      height: 40,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Color(0xfff35383),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          textStyle: TextStyle(
+                              fontFamily: 'GB',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700),
+                        ),
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => MainScreen(),
+                            ),
+                          );
+                        },
+                        child: Text("sign in"),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 32),
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Don't have an account? / ",
+                            style: TextStyle(
+                              color: Color(0xff9c9c9c),
+                            ),
+                          ),
+                          Text(
+                            "Sign up",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
                       ),
                     ),
                   ],

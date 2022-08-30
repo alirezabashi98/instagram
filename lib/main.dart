@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/screen/main_screen.dart';
+import 'package:instagram/screen/splash_screen.dart';
 
 void main() {
   runApp(Application());
@@ -14,10 +14,11 @@ class Application extends StatelessWidget {
       theme: ThemeData(
         textTheme: TextTheme(
           headline4: TextStyle(
-              fontSize: 16,
-              fontFamily: 'GB',
-              fontWeight: FontWeight.w700,
-              color: Colors.white),
+            fontSize: 16,
+            fontFamily: 'GB',
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+          ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -26,12 +27,15 @@ class Application extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             textStyle: TextStyle(
-                fontFamily: 'GB', fontSize: 16, fontWeight: FontWeight.w700),
+              fontFamily: 'GB',
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: MAinScreen(),
+      home: SplashScreen(),
     );
   }
 }
