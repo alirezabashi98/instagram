@@ -61,6 +61,20 @@ class AddPostScreen extends StatelessWidget {
     );
   }
 
+  List<String> _getPost(){
+    return [
+      "images/post02.png",
+      "images/post03.png",
+      "images/post04.png",
+      "images/post05.png",
+      "images/post06.png",
+      "images/post07.png",
+      "images/post08.png",
+      "images/post09.png",
+      "images/post10.png",
+    ];
+  }
+
   Widget _getWholeScrollingPart() {
     return CustomScrollView(
       slivers: [
@@ -90,12 +104,12 @@ class AddPostScreen extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     child: FittedBox(
                       fit: BoxFit.cover,
-                      child: Image.asset('images/item$index.png'),
+                      child: Image.asset(_getPost()[index]),
                     ),
                   ),
                 );
               },
-              childCount: 10,
+              childCount: 9,
             ),
           ),
         ),
@@ -118,7 +132,7 @@ class AddPostScreen extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(15)),
         child: FittedBox(
           fit: BoxFit.cover,
-          child: Image.asset('images/item8.png'),
+          child: Image.asset('images/post01.png'),
         ),
       ),
     );

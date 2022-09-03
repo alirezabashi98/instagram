@@ -51,7 +51,7 @@ class SwitchAccountScreen extends StatelessWidget {
                             SizedBox(
                               height: 32,
                             ),
-                            Image(image: AssetImage('images/profile.png')),
+                            ClipRRect(borderRadius: BorderRadius.circular(15),child: Image(image: AssetImage('images/profile.png'),width: 130,height: 130,fit: BoxFit.cover,)),
                             SizedBox(
                               height: 20,
                             ),
@@ -75,7 +75,7 @@ class SwitchAccountScreen extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                child: Text('Continue'),
+                                child: Text('Continue',style: TextStyle(color: Colors.white,fontSize: 16,fontFamily: 'GB',),),
                               ),
                             ),
                             SizedBox(
@@ -102,14 +102,14 @@ class SwitchAccountScreen extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: 'GB',
                       color: Colors.grey[700],
-                      fontSize: 20,
+                      fontSize: 16,
                     ),
                   ),
                   Text(
                     'Sing up',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 16,
                     ),
                   )
                 ],

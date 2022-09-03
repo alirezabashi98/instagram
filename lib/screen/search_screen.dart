@@ -28,9 +28,7 @@ class SearchScreen extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: FittedBox(
-                          fit: BoxFit.cover,
-                          child: Image.asset("images/item${index}.png")),
+                      child: Image.asset(_getDataSearch()[index],fit: BoxFit.cover,),
                     ),
                   ),
                   childCount: 10,
@@ -87,13 +85,39 @@ class SearchScreen extends StatelessWidget {
         ),
       );
 
+  List<String> _getDataSearch() {
+    return [
+      "images/search01.png",
+      "images/search02.png",
+      "images/search03.png",
+      "images/search04.png",
+      "images/search05.png",
+      "images/search06.png",
+      "images/search07.png",
+      "images/search08.png",
+      "images/search09.png",
+      "images/search10.png",
+    ];
+  }
+
+  List<String> _getCategory() {
+    return [
+      "All",
+      "Account",
+      "Hashtag",
+      "Caption",
+      "Story",
+      "Comment",
+    ];
+  }
+
   Widget _getStoryList() {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 20),
       height: 23,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: 6,
         itemBuilder: (context, index) => Container(
           margin: EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
@@ -104,7 +128,7 @@ class SearchScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 18, vertical: 4),
               child: Text(
-                "alireza $index",
+                _getCategory()[index],
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'GM',

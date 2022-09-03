@@ -99,11 +99,13 @@ class ShareBottomSheet extends StatelessWidget {
         SliverGrid(
           delegate: SliverChildBuilderDelegate(
             (context, index) {
-              return Container(
-                color: Colors.amber,
+              return Column(
+                children: [
+                  _getItemGrid(index),
+                ],
               );
             },
-            childCount: 100,
+            childCount: 110,
           ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing: 20,
@@ -116,7 +118,40 @@ class ShareBottomSheet extends StatelessWidget {
     );
   }
 
-  Widget _getItemGrid() {
+  List<String> _getDataFaceImage() {
+    return [
+      "images/profile.png",
+      "images/bottom01.png",
+      "images/bottom02.png",
+      "images/bottom03.png",
+      "images/bottom04.png",
+      "images/bottom05.png",
+      "images/bottom06.png",
+      "images/bottom07.png",
+      "images/bottom08.png",
+      "images/bottom09.png",
+      "images/bottom10.png",
+      "images/bottom10.png",
+    ];
+  }
+
+  List<String> _getDataFaceName() {
+    return [
+      "Your Story",
+      "AmirAhmad",
+      "Mahaa.candle",
+      "Webq.co",
+      "Arash_313_",
+      "Abed.kamali",
+      "germany.lang",
+      "sam_karman",
+      "yasiiin_",
+      "Alirezaaa",
+      "Sara.karimi",
+    ];
+  }
+
+  Widget _getItemGrid(int index) {
     return Column(
       children: [
         Container(
@@ -124,20 +159,23 @@ class ShareBottomSheet extends StatelessWidget {
           height: 60,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: Image.asset("images/profile.png"),
+            child: Image.asset(
+              _getDataFaceImage()[index < 11 ? index : index % 10],
+              width: 60,
+              height: 60,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
-        SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10),
         Text(
-          "alirezabashi98",
-          textAlign: TextAlign.center,
+          _getDataFaceName()[index < 11 ? index : index ~/ 10],
           style: TextStyle(
+            color: Colors.white,
             fontFamily: 'GB',
             fontSize: 12,
-            color: Colors.white,
           ),
+          textAlign: TextAlign.center,
         ),
       ],
     );

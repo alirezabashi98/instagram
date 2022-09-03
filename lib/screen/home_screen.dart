@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: 10,
           itemBuilder: (context, index) =>
-              index == 0 ? _getAddStoryBox() : _getStoryBox()),
+              index == 0 ? _getAddStoryBox() : _getStoryBox(index)),
     );
   }
 
@@ -51,22 +51,28 @@ class HomeScreen extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: 9,
-      itemBuilder: (context, index) => _getPost(context),
+      itemBuilder: (context, index) => _getPost(context,index),
     );
   }
 
-  Column _getPost(BuildContext context) {
+  Column _getPost(BuildContext context,int index) {
     return Column(
       children: [
         SizedBox(height: 34),
         _getHeaderPost(),
         SizedBox(height: 24),
-        _getBodyPost(context),
+        _getBodyPost(context,index),
       ],
     );
   }
 
-  Container _getBodyPost(BuildContext context) {
+  List<String> _getPostCover() => [
+    "images/post_cover01.png",
+    "images/post_cover02.png",
+    "images/post_cover03.png",
+  ];
+
+  Container _getBodyPost(BuildContext context,int index) {
     return Container(
       width: 394,
       height: 440,
@@ -75,9 +81,16 @@ class HomeScreen extends StatelessWidget {
         children: [
           Positioned(
             top: 0,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset("images/post_cover.png"),
+            child: Container(
+              width: 394,
+              height: 394,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(_getPostCover()[index<3 ? index : index~/4],fit: BoxFit.fill,),
+              ),
             ),
           ),
           Positioned(
@@ -196,7 +209,7 @@ class HomeScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'alirezabashi98',
+                  "AmirAhmad",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
@@ -204,7 +217,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'علیرضا باشی برنامه نویس موبایل',
+                  "امیراحمد برنامه‌نویس موبایل",
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'SM',
@@ -241,7 +254,40 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _getStoryBox() {
+  List<String> _getDataFaceImage() {
+    return [
+      "images/profile.png",
+      "images/bottom01.png",
+      "images/bottom02.png",
+      "images/bottom03.png",
+      "images/bottom04.png",
+      "images/bottom05.png",
+      "images/bottom06.png",
+      "images/bottom07.png",
+      "images/bottom08.png",
+      "images/bottom09.png",
+      "images/bottom10.png",
+      "images/bottom10.png",
+    ];
+  }
+
+  List<String> _getDataFaceName() {
+    return [
+      "Your Story",
+      "AmirAhmad",
+      "Mahaa.candle",
+      "Webq.co",
+      "Arash_313_",
+      "Abed.kamali",
+      "germany.lang",
+      "sam_karman",
+      "yasiiin_",
+      "Alirezaaa",
+      "Sara.karimi",
+    ];
+  }
+
+  Widget _getStoryBox(int index) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
       child: Column(
@@ -258,13 +304,13 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 height: 58,
                 width: 58,
-                child: Image.asset('images/profile.png'),
+                child: Image.asset(_getDataFaceImage()[index<11? index : index~/10]),
               ),
             ),
           ),
           SizedBox(height: 10),
           Text(
-            "Alireza",
+            _getDataFaceName()[index<11? index : index~/10],
             style: TextStyle(color: Colors.white),
           )
         ],
@@ -285,7 +331,7 @@ class HomeScreen extends StatelessWidget {
         child: Container(
           height: 38,
           width: 38,
-          child: Image.asset('images/profile.png'),
+          child: Image.asset('images/bottom01.png'),
         ),
       ),
     );
@@ -302,6 +348,7 @@ class HomeScreen extends StatelessWidget {
               width: 58,
               height: 58,
               decoration: BoxDecoration(
+                border: Border.all(color: Colors.white,width: 2),
                 color: Color(0xff1c1f2e),
                 borderRadius: BorderRadius.circular(15),
               ),

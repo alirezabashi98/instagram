@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:instagram/screen/login_screen.dart';
-import 'package:instagram/screen/main_screen.dart';
 import 'package:instagram/screen/switch_account_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -34,6 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        color: Colors.black,
         image: DecorationImage(
             image: AssetImage("images/pattern1.png"),
             repeat: ImageRepeat.repeat),
